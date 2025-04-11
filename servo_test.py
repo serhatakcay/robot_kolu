@@ -51,11 +51,5 @@ try:
             print(f"Kanal 0 açısı: {angle}")
             time.sleep(0.2)  # Hareket hızı
 
-        # Kanal 4
-        for angle in range(0, 10, 1):
-            set_servo_angle(4, angle)
-            print(f"Kanal 4 açısı: {angle}")
-            time.sleep(0.2)  # Hareket hızı
-
 except KeyboardInterrupt:
     print("Robot kolu başlangıç pozisyonuna geldi.")
