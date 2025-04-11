@@ -32,24 +32,30 @@ pca9685_setup()
 
 try:
     print("Robot kolu başlangıç pozisyonuna getiriliyor...")
-    while True:
-        # Kanal 0
-        for angle in range(0, 6, 1):
-            set_servo_angle(1, angle) #Kanal 0'ı kontrol ettiğimizi belirttik
-            print(f"Kanal 1 açısı: {angle}")
-            time.sleep(0.2) #hareket hizi
+    
+    # Kanal 0: 0 derece ile 5 derece arasında hareket ettir
+    set_servo_angle(0, 0)
+    print(f"Kanal 0 açısı: 0")
+    time.sleep(0.2)  # Hareket hızı
 
-        # Kanal 2
-        for angle in range(0, 6, 1):
-            set_servo_angle(2, angle)
-            print(f"Kanal 2 açısı: {angle}")
-            time.sleep(0.2)
+    # Kanal 1: 0 derece ile 5 derece arasında hareket ettir
+    for angle in range(0, 10, 5):
+        set_servo_angle(1, angle)  # Kanal 1 için açı ayarı
+        print(f"Kanal 1 açısı: {angle}")
+        time.sleep(0.2)  # Hareket hızı
 
-        # Kanal 0
-        for angle in range(30, -1, -5):
-            set_servo_angle(0, angle)
-            print(f"Kanal 0 açısı: {angle}")
-            time.sleep(0.2)  # Hareket hızı
+    # Kanal 2: 0 derece ile 5 derece arasında hareket ettir
+    for angle in range(0, 10, 5):
+        set_servo_angle(2, angle)  # Kanal 2 için açı ayarı
+        print(f"Kanal 2 açısı: {angle}")
+        time.sleep(0.2)  # Hareket hızı
 
+    # Kanal 0: 30 dereceden 0 dereceye geri dön
+    for angle in range(0, 30, 5):
+        set_servo_angle(0, angle)  # Kanal 0'ı kontrol ettiğimizi belirttik
+        print(f"Kanal 0 açısı: {angle}")
+        time.sleep(0.2)  # Hareket hızı
+
+    print("Robot kolu başlangıç pozisyonuna geldi.")
 except KeyboardInterrupt:
     print("Robot kolu başlangıç pozisyonuna geldi.")
