@@ -32,19 +32,18 @@ pca9685_setup()
 
 try:
     print("Servo motor testi başlıyor...")
-    # Hareketleri 3 defa tekrarlama
-    for _ in range(3):
-        print("Saat yönünde 5 derece dönüyor...")
-        for channel in range(5):  # Kanal 0'dan 4'e kadar
-            set_servo_angle(channel, 5)
-        time.sleep(0.5)
+    while True:
+        # Kanal 0 için 0-180 derece test
+        for angle in range(0, 181, 10):
+            set_servo_angle(0, angle)
+            print(f"Kanal 0 açısı: {angle}")
+            time.sleep(0.2)
 
-        print("Saatin ters yönünde 5 derece dönüyor...")
-        for channel in range(5):
-            set_servo_angle(channel, 0)
-        time.sleep(0.5)
+        # Kanal 1 için 180-0 derece test
+        for angle in range(180, -1, -10):
+            set_servo_angle(1, angle)
+            print(f"Kanal 1 açısı: {angle}")
+            time.sleep(0.2)
 
-    print("Test tamamlandı!")
-    
 except KeyboardInterrupt:
     print("Test durduruldu.")
